@@ -1,0 +1,117 @@
+:root {
+  --color-blue: #233d4a;
+  --color-light-blue: #a8bec9;
+  --color-dark-blue: #192a32;
+  --color-darker-blue: #112129;
+  --color-orange: #f2b237;
+  --color-aqua: #31c4be;
+  --border-radius: 1rem;
+  --grid-rows: 4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  font-size: 1.6rem;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /*background-color: var(--color-dark-blue);*/
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.container:before {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  opacity: 0.8;
+  background: url(./pattern.jpg);
+  background-size: cover;
+  filter: blur(35px);
+  z-index: -1;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-rows), 100px);
+  grid-template-rows: repeat(var(--grid-rows), 100px);
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 3em;
+  color: var(--color-aqua);
+  background-color: var(--color-blue);
+  border-radius: var(--border-radius);
+  isolation: isolate;
+  font-family: "Rubik Mono One", sans-serif;
+}
+
+.cell--X {
+  color: var(--color-aqua);
+}
+
+.cell--O {
+  color: var(--color-orange);
+}
+
+.value {
+  z-index: 1;
+  user-select: none;
+  display: none;
+}
+
+.cell:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: -0.4rem;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--color-darker-blue);
+}
+
+.cell:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--color-blue);
+  transition: all 0.3s;
+}
+
+#reset {
+  display: block;
+  margin: 20px auto;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: 1px solid var(--color-aqua);
+  border-radius: calc(var(--border-radius) / 4);
+  padding: 0.4rem 0.8rem;
+  color: var(--color-aqua);
+}
