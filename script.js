@@ -33,8 +33,8 @@ cells.forEach((cell)=>{
 cells.forEach((cell)=>{ 
 cell.addEventListener('click',()=>{
             let char1 = cells[0].childNodes[1].innerText;
-            let char2 = cells[4].childNodes[1].innerText;
-            let char3 = cells[8].childNodes[1].innerText;
+            let char2 = cells[3].childNodes[1].innerText;
+            let char3 = cells[6].childNodes[1].innerText;
                 if(char1 == char2 && char2 == char3){
                     if(char1 === 'X'){
                             setTimeout(() => {alert('X Wins');resetFunc(); }, 500); }
@@ -49,15 +49,15 @@ cell.addEventListener('click',()=>{
                     else if(char1 === 'O')setTimeout(() => {alert('O Wins');resetFunc(); }, 500); }       
             
 
-
-
 for (let i = 0; i < cells.length - 2; i++) {
             const char1 = cells[i].childNodes[1].innerText;
             const char2 = cells[i + 1].childNodes[1].innerText;
             const char3 = cells[i + 2].childNodes[1].innerText;
-            const char4 = cells[i + 3].childNodes[1].innerText;
+            // const char4 = cells[i + 3].childNodes[1].innerText;
             if(i===0 ||i=== (cells.length)**0.5 || i===((cells.length)**0.5)*2 || i===((cells.length)**0.5)*3){
-                if(char1 == char2 && char2 == char3 && char3 == char4 ){
+                if(char1 == char2 && char2 == char3 
+                    // && char3 == char4
+                     ){
                     if(char1 === 'X'){setTimeout(() => {alert('X Wins');resetFunc(); }, 500); }
                     else if(char1 === 'O')setTimeout(() => {alert('O Wins');resetFunc(); }, 500); }       
                 }
@@ -65,16 +65,18 @@ for (let i = 0; i < cells.length - 2; i++) {
 
 
         {
-// for (let i = 0; i < cells.length; i++) {
-            // const char1 = cells[0].childNodes[1].innerText;
-            // const char2 = cells[4].childNodes[1].innerText;
-            // const char3 = cells[8].childNodes[1].innerText;
-            // const char4 = cells[12].childNodes[1].innerText;
-            // // if(i===0 ||i===1 || i===2 || i=== 3){
-            //     if(char1 == char2 == char2 == char3 == char3 == char4){
-            //         if(char1 === 'X'){setTimeout(() => {alert('X Wins');resetFunc(); }, 500); }
-            //         else if(char1 === 'O')setTimeout(() => {alert('O Wins');resetFunc(); }, 500); }       
-                // }
+for (let i = 0; i < cells.length - 2; i++) {
+            const char1 = cells[0].childNodes[1].innerText;
+            const char2 = cells[(cells.length)**0.5].childNodes[1].innerText;
+            const char3 = cells[((cells.length)**0.5)*2].childNodes[1].innerText;
+            // const char4 = cells[((cells.length)**0.5)*3].childNodes[1].innerText;
+            // if(i===0 ||i===1 || i===2 || i=== 3){
+                if(char1 == char2 && char2 == char3 
+                    // && char3 == char4
+                     ){
+                    if(char1 === 'X'){setTimeout(() => {alert('X Wins');resetFunc(); }, 500); }
+                    else if(char1 === 'O')setTimeout(() => {alert('O Wins');resetFunc(); }, 500); }       
+                }
             }
     });
     });
