@@ -260,8 +260,8 @@ h2 {
 
 @media (max-width: 1000px) {
   .board {
-    grid-template-columns: repeat(var(--grid-rows), 200px);
-    grid-template-rows: repeat(var(--grid-rows), 200px);
+    grid-template-columns: repeat(var(--grid-rows), 180px);
+    grid-template-rows: repeat(var(--grid-rows), 180px);
   }
   .welcome {
     font-size: 5em;
