@@ -1,3 +1,62 @@
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  .board {
+    grid-template-columns: repeat(var(--grid-rows), 80px);
+    grid-template-rows: repeat(var(--grid-rows), 80px);
+    gap: 1rem;
+  }
+
+  .cell {
+    font-size: 2.5em;
+  }
+
+  .button {
+    padding: 0.3rem 0.6rem;
+    font-size: 14px;
+  }
+
+  .welcome {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+  }
+
+  .level__button {
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    margin: 0 0 2em 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    max-width: 100vw;
+  }
+
+  .levels {
+    column-gap: 2rem;
+  }
+
+  .level__button {
+    margin: 0 0 4em 0;
+  }
+
+  #change__level {
+    margin-bottom: 1rem;
+  }
+
+  #reset {
+    margin: 20px auto 0 auto;
+  }
+}
+
 :root {
   --color-blue: #233d4a;
   --color-light-blue: #a8bec9;
@@ -43,7 +102,7 @@ body {
   height: 130%;
   opacity: 0.8;
 
-  background: url(./pattern.jpg);
+  background: url(images/pattern.jpg);
   background-size: cover;
   filter: blur(35px);
   z-index: -1;
@@ -104,19 +163,23 @@ body {
   background-color: var(--color-blue);
   transition: all 0.3s;
 }
+.cell--win:after {
+  background-color: yellow;
+}
+
 .cell--win {
   background-color: yellow;
 }
 
 .button:hover {
-  transition: ease-in-out 0.2s;
-  border: 2px solid var(--color-aqua);
-  font-weight: bold;
+  border: 0;
+  color: white;
+  background-color: var(--color-aqua);
+  transition: all 0.5s;
 }
 
 .button {
   display: inline;
-  margin: 20px auto;
   cursor: pointer;
   background: none;
   outline: none;
@@ -126,15 +189,34 @@ body {
   color: var(--color-aqua);
   font-size: 15px;
 }
-h1 {
-  /* color: white; */
+
+.welcome {
+  font-size: 3em; /* Increased font size */
+  margin-bottom: 2em;
+  padding: 10px;
+  border-radius: 10px;
+  background: radial-gradient(
+    circle,
+    rgba(13, 8, 96, 1) 0%,
+    rgba(9, 9, 121, 1) 21%,
+    rgba(6, 84, 170, 1) 51%,
+    rgba(0, 255, 113, 1) 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
   padding: 10px; /* Add padding */
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add box shadow */
 
-  /* backdrop-filter: blur(1px); */
   background: radial-gradient(
     circle,
     rgba(13, 8, 96, 1) 0%,
@@ -149,12 +231,16 @@ h1 {
   user-select: none;
 }
 .level {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
 }
 .level__button {
   font-size: 1.2em;
   padding: 0.5em 1em;
-  margin: 0 0 2em 0;
+  margin: 0 0 4em 0;
   cursor: pointer;
   background-color: #4caf50;
   color: white;
@@ -178,9 +264,12 @@ h1 {
   column-gap: 2rem;
 }
 #change__level {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   display: none;
 }
 #reset {
+  margin: 20px auto 0 auto;
   display: none;
 }
+
+/* Add this at the end of your CSS */

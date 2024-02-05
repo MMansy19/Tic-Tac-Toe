@@ -2,20 +2,30 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="..\static\assets\shared\logo.svg"
+    />
+
     <title>X-O Advanced Game</title>
   </head>
   <body>
     <section class="container">
       <div class="level">
+        <h1 class="welcome">Welcome To X-O Advanced Game</h1>
         <button id="change__level" class="button">Change Game Mode</button>
-        <h1>Game Mode</h1>
-        <div class="levels modes">
+
+        <h2>Game Mode</h2>
+        <div class="modes levels">
           <button id="one_player" class="level__button active">
             Single Player
           </button>
           <button id="two_players" class="level__button">Two Players</button>
         </div>
-        <h1>Choose Difficulty</h1>
+
+        <h2>Choose Difficulty</h2>
         <div class="levels">
           <button id="easy" class="level__button">Easy (3 × 3)</button>
           <button id="medium" class="level__button">Medium (4 × 4)</button>
@@ -23,35 +33,7 @@
         </div>
       </div>
 
-      <div class="board">
-        <div class="cell">
-          <span class="value">1</span>
-        </div>
-        <div class="cell">
-          <span class="value">2</span>
-        </div>
-        <div class="cell">
-          <span class="value">3</span>
-        </div>
-        <div class="cell">
-          <span class="value">4</span>
-        </div>
-        <div class="cell">
-          <span class="value">5</span>
-        </div>
-        <div class="cell">
-          <span class="value">6</span>
-        </div>
-        <div class="cell">
-          <span class="value">7</span>
-        </div>
-        <div class="cell">
-          <span class="value">8</span>
-        </div>
-        <div class="cell">
-          <span class="value">9</span>
-        </div>
-      </div>
+      <div class="board"></div>
       <button id="reset" class="button">Reset</button>
     </section>
 

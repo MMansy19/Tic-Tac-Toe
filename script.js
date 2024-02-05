@@ -2,7 +2,7 @@ const root = document.documentElement;
 const levelButtons = document.querySelectorAll('.level__button')
 const playerTwoMode = document.querySelector('#two_players')
 const playerOneMode = document.querySelector('#one_player')
-const h1 = document.querySelectorAll('h1')
+const h1 = document.querySelectorAll('h1,h2')
 const board = document.querySelector('.board')
 const reset = document.querySelector('#reset')
 const easy = document.querySelector('#easy')
@@ -32,52 +32,55 @@ const createBoard = (numberOfCells) => {
 
     cells = board.querySelectorAll('.cell');
 };
+
 const getNumberOfCells = (level) => {
     if (level === 'easy') return 9;
     if (level === 'medium') return 16;
     if (level === 'hard') return 25;
 };
 
-const resetFunc = ()=>{
-    cells.forEach((cell)=>{
-        count = 1;
+const resetFunc = () => {
+    count = 1;
+    cells.forEach((cell) => {
         cell.classList.remove('cell--X');
         cell.classList.remove('cell--O');
-        cell.childNodes[0].innerText = '';
-        cell.childNodes[0].style.display = 'none';
+        cell.classList.remove('cell--win');
+        const valueSpan = cell.querySelector('.value');
+        valueSpan.innerText = ''; // Clear the text content
+        valueSpan.style.display = 'none';
     });
 };
 
-    const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
-    if (char1 !== '') {
+const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
+    if (char1.childNodes[0].innerText !== '') {
         if (length == 9) {
-        if (char1 == char2 && char2 == char3) {
-            // highlightWinningLine([char1, char2, char3]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText) {
+            highlightWinningLine([char1, char2, char3]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
         } else if (length == 16) {
-        if (char1 == char2 && char2 == char3 && char3 == char4) {
-            // highlightWinningLine([char1, char2, char3, char4]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText) {
+            highlightWinningLine([char1, char2, char3, char4]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
-        } else {
-        if (char1 == char2 && char2 == char3 && char3 == char4 && char4 == char5) {
-            // highlightWinningLine([char1, char2, char3, char4, char5]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        } else if (length == 25) {
+        if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText && char4.childNodes[0].innerText == char5.childNodes[0].innerText) {
+            highlightWinningLine([char1, char2, char3, char4, char5]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
         }
     }
-    }
+}
 
-// // Function to highlight the winning line
-// const highlightWinningLine = (lineCells) => {
-//   lineCells.forEach(cell => {
-//     // Check if the cell is a valid element
-//     if (cell && cell.classList) {
-//       cell.classList.add('cell--win');
-//     }
-//   });
-// }
+// Function to highlight the winning line
+const highlightWinningLine = (lineCells) => {
+  lineCells.forEach(cell => {
+    // Check if the cell is a valid element
+    if (cell && cell.classList) {
+      cell.classList.add('cell--win');
+    }
+  });
+}
 
 
 const makeComputerMove = () => {
@@ -94,7 +97,7 @@ const makeComputerMove = () => {
                 computerValueSpan.style.display = 'block';
                 computerValueSpan.innerText = 'O';
                 count = 1;
-            }, 500); 
+            }, 800); 
 
             // Check for a winner after each move
         }
@@ -130,33 +133,34 @@ const startLogic = ()=> {
         // =======================================================================================================================================================
         // ======================================================================== First \ line =================================================================
         // =======================================================================================================================================================
-    let char1 = cells[0].childNodes[0].innerText;
-    let char2 = cells[(cells.length)**0.5 +1].childNodes[0].innerText;
-    let char3 = cells[((cells.length)**0.5 +1)*2].childNodes[0].innerText;
+    let char1 = cells[0];
+    let char2 = cells[(cells.length)**0.5 +1];
+    let char3 = cells[((cells.length)**0.5 +1)*2];
     let char4;
     let char5;
     if(cells.length<=9){
         checkWinner(cells.length,char1, char2, char3)
     }
     else if(cells.length<=16){
-        char4 = cells[((cells.length)**0.5 +1)*3].childNodes[0].innerText;
+        char4 = cells[((cells.length)**0.5 +1)*3];
         checkWinner(cells.length,char1, char2, char3, char4);
     }
     else if(cells.length>16){
-        char5 = cells[((cells.length)**0.5 +1)*4].childNodes[0].innerText;
+        char4 = cells[((cells.length)**0.5 +1)*3];
+        char5 = cells[((cells.length)**0.5 +1)*4];
         checkWinner(cells.length,char1, char2, char3, char4 , char5);
     }
     // =======================================================================================================================================================
     // ======================================================================== SECOND / line ================================================================
     // =======================================================================================================================================================
-    char1 = cells[(cells.length)**0.5 - 1].childNodes[0].innerText;
-    char2 = cells[((cells.length)**0.5 - 1)*2].childNodes[0].innerText;
-    char3 = cells[((cells.length)**0.5 - 1)*3 ].childNodes[0].innerText;
+    char1 = cells[(cells.length)**0.5 - 1];
+    char2 = cells[((cells.length)**0.5 - 1)*2];
+    char3 = cells[((cells.length)**0.5 - 1)*3 ];
     if(cells.length>9){
-        char4 = cells[((cells.length)**0.5 - 1)*4 ].childNodes[0].innerText;
+        char4 = cells[((cells.length)**0.5 - 1)*4 ];
     }
     if(cells.length>16){
-        char5 = cells[((cells.length)**0.5 - 1)*5 ].childNodes[0].innerText;
+        char5 = cells[((cells.length)**0.5 - 1)*5 ];
     }            
     checkWinner(cells.length,char1, char2, char3, char4 , char5)
     
@@ -165,15 +169,15 @@ const startLogic = ()=> {
         // =======================================================================================================================================================
         // ====================================================================== Horizontal Line ================================================================
         // =======================================================================================================================================================
-        char1 = cells[i].childNodes[0].innerText;
-        char2 = cells[i + 1].childNodes[0].innerText;
-         char3 = cells[i + 2].childNodes[0].innerText;
+        char1 = cells[i];
+        char2 = cells[i + 1];
+         char3 = cells[i + 2];
          
          if(cells.length>9){
-             char4 = cells[i + 3].childNodes[0].innerText;
+             char4 = cells[i + 3];
             }
             if(cells.length>16){
-                char5 = cells[i + 4].childNodes[0].innerText;
+                char5 = cells[i + 4];
             }
         if (i === 0 || i === (cells.length)**0.5 || i === 2 * (cells.length)**0.5) {
             checkWinner(cells.length, char1, char2, char3, char4, char5);
@@ -190,14 +194,14 @@ const startLogic = ()=> {
         // ====================================================================== Vertical Line ================================================================
         // =======================================================================================================================================================
         for (let i = 0; i < cells.length - (cells.length)**0.5 +1; i++) {
-            char1 = cells[i].childNodes[0].innerText;
-            char2 = cells[i + (cells.length)**0.5].childNodes[0].innerText;
-                char3 = cells[i + ((cells.length)**0.5)*2].childNodes[0].innerText;
+            char1 = cells[i];
+            char2 = cells[i + (cells.length)**0.5];
+                char3 = cells[i + ((cells.length)**0.5)*2];
                 if(cells.length>9){
-                    char4 = cells[i + ((cells.length)**0.5)*3].childNodes[0].innerText;
+                    char4 = cells[i + ((cells.length)**0.5)*3];
                 }
                 if(cells.length>16){
-                    char5 = cells[i + ((cells.length)**0.5)*4].childNodes[0].innerText;
+                    char5 = cells[i + ((cells.length)**0.5)*4];
                 }
                 
                 if(i===0 ||i===1 || i===2){
@@ -234,9 +238,7 @@ playerOneMode.addEventListener('click',()=>{
     playerOneMode.classList.add('active')
     playerTwoMode.classList.remove('active')
     player = 1;
-    });
-
-makeComputerMove();
+});
 
 changeLevel.addEventListener('click', () => {location.reload();});
 
