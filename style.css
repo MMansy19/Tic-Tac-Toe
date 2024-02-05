@@ -6,7 +6,7 @@
   --color-orange: #f2b237;
   --color-aqua: #31c4be;
   --border-radius: 1rem;
-  --grid-rows: 4;
+  --grid-rows: 3;
 }
 
 * {
@@ -42,6 +42,7 @@ body {
   width: 130%;
   height: 130%;
   opacity: 0.8;
+
   background: url(./pattern.jpg);
   background-size: cover;
   filter: blur(35px);
@@ -49,7 +50,7 @@ body {
 }
 
 .board {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(var(--grid-rows), 100px);
   grid-template-rows: repeat(var(--grid-rows), 100px);
   margin: 0 auto;
@@ -101,6 +102,7 @@ body {
   width: 100%;
   border-radius: calc(var(--border-radius) / 2);
   background-color: var(--color-blue);
+  /* background-color: yellow; */
   transition: all 0.3s;
 }
 
@@ -122,6 +124,49 @@ body {
   color: var(--color-aqua);
   font-size: 15px;
 }
+h1 {
+  /* color: white; */
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  padding: 10px; /* Add padding */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add box shadow */
+
+  /* backdrop-filter: blur(1px); */
+  background: radial-gradient(
+    circle,
+    rgba(13, 8, 96, 1) 0%,
+    rgba(9, 9, 121, 1) 21%,
+    rgba(6, 84, 170, 1) 51%,
+    rgba(0, 255, 113, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.level {
+  text-align: center;
+}
+.level__button {
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  margin: 0 0 2em 0;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.level__button:hover {
+  background-color: #338637;
+}
+.active {
+  background-color: #338637;
+}
 
 .levels {
   display: flex;
@@ -129,4 +174,11 @@ body {
   align-items: center;
   justify-content: center;
   column-gap: 2rem;
+}
+#change__level {
+  margin-bottom: 2rem;
+  display: none;
+}
+#reset {
+  display: none;
 }
