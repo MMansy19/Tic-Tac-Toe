@@ -30,7 +30,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /*background-color: var(--color-dark-blue);*/
+  /* background-color: var(--color-dark-blue); */
   background-size: cover;
   backdrop-filter: blur(5px);
   overflow: hidden;
@@ -104,8 +104,14 @@ body {
   transition: all 0.3s;
 }
 
-#reset {
-  display: block;
+.button:hover {
+  transition: ease-in-out 0.2s;
+  border: 2px solid var(--color-aqua);
+  font-weight: bold;
+}
+
+.button {
+  display: inline;
   margin: 20px auto;
   cursor: pointer;
   background: none;
@@ -114,4 +120,13 @@ body {
   border-radius: calc(var(--border-radius) / 4);
   padding: 0.4rem 0.8rem;
   color: var(--color-aqua);
+  font-size: 15px;
+}
+
+.levels {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2rem;
 }
