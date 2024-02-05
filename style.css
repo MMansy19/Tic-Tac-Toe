@@ -9,23 +9,9 @@
     gap: 1rem;
   }
 
-  .cell {
-    font-size: 2.5em;
-  }
-
   .button {
     padding: 0.3rem 0.6rem;
     font-size: 14px;
-  }
-
-  .welcome {
-    font-size: 2.5em;
-    margin-bottom: 1em;
-  }
-
-  h2 {
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
   }
 
   .level__button {
@@ -112,7 +98,7 @@ body {
   display: none;
   grid-template-columns: repeat(var(--grid-rows), 100px);
   grid-template-rows: repeat(var(--grid-rows), 100px);
-  margin: 0 auto;
+  /* margin: 0 auto; */
   gap: 1.5rem;
 }
 
@@ -272,4 +258,30 @@ h2 {
   display: none;
 }
 
-/* Add this at the end of your CSS */
+@media (max-width: 1000px) {
+  .board {
+    grid-template-columns: repeat(var(--grid-rows), 200px);
+    grid-template-rows: repeat(var(--grid-rows), 200px);
+  }
+  .welcome {
+    font-size: 5em;
+  }
+  h2 {
+    font-size: 4em;
+    margin-bottom: 1em;
+  }
+  .button {
+    font-size: 40px;
+  }
+  #reset {
+    margin-top: 1em;
+  }
+  .level__button {
+    font-size: 2em;
+    /* padding: 0.5em 1em; */
+    margin: 0 0 2em 0;
+  }
+  .cell {
+    font-size: 6em;
+  }
+}
