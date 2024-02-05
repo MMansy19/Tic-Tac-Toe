@@ -102,8 +102,10 @@ body {
   width: 100%;
   border-radius: calc(var(--border-radius) / 2);
   background-color: var(--color-blue);
-  /* background-color: yellow; */
   transition: all 0.3s;
+}
+.cell--win {
+  background-color: yellow;
 }
 
 .button:hover {

@@ -48,31 +48,36 @@ const resetFunc = ()=>{
     });
 };
 
-const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
-  if (char1 !== '') {
-    if (length == 9) {
-      if (char1 == char2 && char2 == char3) {
-        highlightWinningLine([cells[0], cells[1], cells[2]]); // Highlight the winning line
-        setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
-      }
-    } else if (length == 16) {
-      if (char1 == char2 && char2 == char3 && char3 == char4) {
-        highlightWinningLine([cells[0], cells[1], cells[2], cells[3]]); // Highlight the winning line
-        setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
-      }
-    } else {
-      if (char1 == char2 && char2 == char3 && char3 == char4 && char4 == char5) {
-        highlightWinningLine([cells[0], cells[1], cells[2], cells[3], cells[4]]); // Highlight the winning line
-        setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
-      }
+    const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
+    if (char1 !== '') {
+        if (length == 9) {
+        if (char1 == char2 && char2 == char3) {
+            // highlightWinningLine([char1, char2, char3]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        }
+        } else if (length == 16) {
+        if (char1 == char2 && char2 == char3 && char3 == char4) {
+            // highlightWinningLine([char1, char2, char3, char4]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        }
+        } else {
+        if (char1 == char2 && char2 == char3 && char3 == char4 && char4 == char5) {
+            // highlightWinningLine([char1, char2, char3, char4, char5]); // Highlight the winning line
+            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1} is the WINNER! 🏆`); resetFunc(); }, 300);
+        }
+        }
     }
-  }
-}
+    }
 
-// Function to highlight the winning line
-const highlightWinningLine = (lineCells) => {
-  lineCells.forEach(cell => cell.classList.add('cell--win'));
-}
+// // Function to highlight the winning line
+// const highlightWinningLine = (lineCells) => {
+//   lineCells.forEach(cell => {
+//     // Check if the cell is a valid element
+//     if (cell && cell.classList) {
+//       cell.classList.add('cell--win');
+//     }
+//   });
+// }
 
 
 const makeComputerMove = () => {
@@ -125,7 +130,7 @@ const startLogic = ()=> {
         // =======================================================================================================================================================
         // ======================================================================== First \ line =================================================================
         // =======================================================================================================================================================
-        let char1 = cells[0].childNodes[0].innerText;
+    let char1 = cells[0].childNodes[0].innerText;
     let char2 = cells[(cells.length)**0.5 +1].childNodes[0].innerText;
     let char3 = cells[((cells.length)**0.5 +1)*2].childNodes[0].innerText;
     let char4;
@@ -170,15 +175,16 @@ const startLogic = ()=> {
             if(cells.length>16){
                 char5 = cells[i + 4].childNodes[0].innerText;
             }
-            if(i===0 || i=== (cells.length)**0.5 || i===((cells.length)**0.5)*2){
-                checkWinner(cells.length,char1, char2, char3, char4 , char5)
-            }
-            if(cells.length>9 && i===((cells.length)**0.5)*3){
-                checkWinner(cells.length,char1, char2, char3, char4 , char5)
-            }
-            if(cells.length>16 && i===((cells.length)**0.5)*4){
-                checkWinner(cells.length,char1, char2, char3, char4 , char5)
-            }
+        if (i === 0 || i === (cells.length)**0.5 || i === 2 * (cells.length)**0.5) {
+            checkWinner(cells.length, char1, char2, char3, char4, char5);
+        }
+        if (cells.length > 9 && i === 3 * (cells.length)**0.5) {
+            checkWinner(cells.length, char1, char2, char3, char4, char5);
+        }
+        if (cells.length > 16 && i === 4 * (cells.length)**0.5) {
+            checkWinner(cells.length, char1, char2, char3, char4, char5);
+        }
+
         }       
         // =======================================================================================================================================================
         // ====================================================================== Vertical Line ================================================================
