@@ -1,10 +1,15 @@
 ## Tic-Tac-Toe Challenge
 
 Welcome to the Tic-Tac-Toe Challenge! A classic game with a twist - can you outsmart the computer and emerge victorious?/
-# [Live Link](https://main--mansy-x-o-game.netlify.app/)
+## [Live Link](https://main--mansy-x-o-game.netlify.app/)
 
-## Preview
 ![preview](images/tic-tac-toe-svgrepo-com.svg)
+
+## Screenshots
+![preview](images/)
+![preview](images/)
+![preview](images/)
+![preview](images/)
 
 ### Game Features
 
