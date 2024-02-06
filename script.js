@@ -43,6 +43,7 @@ const resetFunc = () => {
     createBoard(cells.length);
     addClickListeners();
     startLogic();
+    count = 1;
 };
 
 const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
