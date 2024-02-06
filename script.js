@@ -213,7 +213,7 @@ const startLogic = ()=> {
         // =======================================================================================================================================================
         let counter = 0;
         for (let i = 0; i < cells.length; i++) {
-            if (cells[i].childNodes[0].innerText !== '' && !cells[0].classList.contains('cell--win')){
+            if (cells[i].childNodes[0].innerText !== '' && !cells[i].classList.contains('cell--win')){
                 counter += 1;
             }
         }
