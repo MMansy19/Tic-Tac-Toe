@@ -50,17 +50,17 @@ const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
         if (length == 9) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`);}, 400);
         }
         } else if (length == 16) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3, char4]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`);}, 400);
         }
         } else if (length == 25) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText && char4.childNodes[0].innerText == char5.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3, char4, char5]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`);}, 400);
         }
         }
     }
@@ -217,7 +217,7 @@ const startLogic = ()=> {
             }
         }
         if (counter === cells.length){
-            setTimeout(() => { alert(`It's a draw! 🤝 Play again for another chance to win!`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`It's a draw! 🤝 Play again for another chance to win!`);}, 400);
         }
 
         });
