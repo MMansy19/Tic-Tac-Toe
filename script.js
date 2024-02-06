@@ -217,6 +217,19 @@ const startLogic = ()=> {
         });
 });
 }
+
+const reload = ()=>{
+    board.style.display='none';
+    reset.style.display='none';
+        h1.forEach((h1)=>{
+        h1.style.display='block';
+    })
+    changeLevel.style.display='none';
+    levelButtons.forEach((button)=>{
+        button.style.display='block';
+    })
+}
+
 const editPage = ()=>{
     board.style.display='grid';
     reset.style.display='block';
@@ -240,7 +253,7 @@ playerOneMode.addEventListener('click',()=>{
     player = 1;
 });
 
-changeLevel.addEventListener('click', () => {location.reload();});
+changeLevel.addEventListener('click', () => {reload();});
 
 easy.addEventListener('click', () => {
     editPage();
