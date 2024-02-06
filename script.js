@@ -40,15 +40,9 @@ const getNumberOfCells = (level) => {
 };
 
 const resetFunc = () => {
-    count = 1;
-    cells.forEach((cell) => {
-        cell.classList.remove('cell--X');
-        cell.classList.remove('cell--O');
-        cell.classList.remove('cell--win');
-        const valueSpan = cell.querySelector('.value');
-        valueSpan.innerText = ''; // Clear the text content
-        valueSpan.style.display = 'none';
-    });
+    createBoard(cells.length);
+    addClickListeners();
+    startLogic();
 };
 
 const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
@@ -56,17 +50,17 @@ const checkWinner = (length, char1, char2, char3, char4 = '', char5 = '') => {
         if (length == 9) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
         } else if (length == 16) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3, char4]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
         } else if (length == 25) {
         if (char1.childNodes[0].innerText == char2.childNodes[0].innerText && char2.childNodes[0].innerText == char3.childNodes[0].innerText && char3.childNodes[0].innerText == char4.childNodes[0].innerText && char4.childNodes[0].innerText == char5.childNodes[0].innerText) {
             highlightWinningLine([char1, char2, char3, char4, char5]); // Highlight the winning line
-            setTimeout(() => { alert(`🎉 Congratulations! Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
+            setTimeout(() => { alert(`🎉 Player ${char1.childNodes[0].innerText} is the WINNER! 🏆`); resetFunc(); }, 400);
         }
         }
     }
@@ -81,7 +75,6 @@ const highlightWinningLine = (lineCells) => {
     }
   });
 }
-
 
 const makeComputerMove = () => {
     if(player === 1 ){
@@ -214,6 +207,19 @@ const startLogic = ()=> {
                     checkWinner(cells.length,char1, char2, char3, char4 , char5)
                 }
             }
+        // =======================================================================================================================================================
+        // ======================================================================== Check Draw ===================================================================
+        // =======================================================================================================================================================
+        let counter = 0;
+        for (let i = 0; i < cells.length; i++) {
+            if (cells[i].childNodes[0].innerText !== ''){
+                counter += 1;
+            }
+        }
+        if (counter === cells.length){
+            setTimeout(() => { alert(`It's a draw! 🤝 Play again for another chance to win!`); resetFunc(); }, 400);
+        }
+
         });
 });
 }
@@ -284,8 +290,4 @@ hard.addEventListener('click', () => {
 
 reset.addEventListener('click', () => {
     resetFunc();
-    if (currentLevel) {
-        createBoard(getNumberOfCells(currentLevel));
-        addClickListeners();
-    }
 });
